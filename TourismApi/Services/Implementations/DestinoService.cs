@@ -32,5 +32,13 @@ namespace TourismApi.Services.Implementations
 
         }
 
+        public Clima GetClimaByDestino(int id)
+        {
+            var clima = _context.Clima.ToList();
+            var destinos = _context.Destinos.ToList();
+            var relations = _context.ClimaDestinoRelation.ToList();
+
+            return clima.FirstOrDefault(c => relations.Any(r => r.clima_id == c.id && r.destino_id == id))!;
+        }
     }
 }

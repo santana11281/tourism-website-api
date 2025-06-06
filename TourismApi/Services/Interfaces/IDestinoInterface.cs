@@ -9,5 +9,6 @@ namespace TourismApi.Services.Interfaces
 
 
         IEnumerable<Activity> GetActivitiesByDestino(int id);
+        Clima GetClimaByDestino(int id);
     }
 }

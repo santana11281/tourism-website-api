@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TourismApi.Modelos
+namespace TourismApi.Modelos.RelationShips
 {
     [Table("DestinosActivityRelation")]
     public class DestinoActividadRelacion

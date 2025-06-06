@@ -34,6 +34,12 @@ namespace TourismApi.Controllers
 
         }
 
+        [HttpGet("GetClima/{id}")]
+        public Clima GetClima(int id)
+        {
+            return _destinoService.GetClimaByDestino(id);
+        }
+
 
     }
 }
