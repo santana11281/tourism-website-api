@@ -3,4 +3,10 @@
 GET {{TourismApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
+
+
+GET {{TourismApi_HostAddress}}/destinos/
+Accept: application/json
+
+
 ###
