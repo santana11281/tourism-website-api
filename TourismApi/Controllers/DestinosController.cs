@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using TourismApi.Modelos;
 using TourismApi.Services.Interfaces;
 
 namespace TourismApi.Controllers
 {
+    /// <summary>
+    /// Controller for managing tourist destinations and their details
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class DestinosController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -20,28 +25,62 @@ namespace TourismApi.Controllers
 
         }
 
+        /// <summary>
+        /// Gets a list of tourist destinations
+        /// </summary>
+        /// <returns>A list of destinations</returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Destino>), 200)]
+        public IActionResult GetBase()
+        {
+            return Ok(new { status = "on" });
+        }
+
+        /// <summary>
+        /// Gets a list of tourist destinations
+        /// </summary>
+        /// <returns>A list of destinations</returns>
         [HttpGet("GetDestinos")]
+        [ProducesResponseType(typeof(IEnumerable<Destino>), 200)]
         public IEnumerable<Destino> GetDestinos()
         {
             var destinos = _context.Destinos;
-            return destinos;
+            return destinos.Take(4);
         }
 
+        /// <summary>
+        /// Gets activities for a specific destination
+        /// </summary>
+        /// <param name="id">The destination ID</param>
+        /// <returns>A list of activities</returns>
         [HttpGet("GetActivities/{id}")]
-        public IEnumerable<Activity> GetActivities(int id)
+        [ProducesResponseType(typeof(IEnumerable<Activity>), 200)]
+        public IEnumerable<Activity> GetActivities([FromRoute] int id)
         {
             return _destinoService.GetActivitiesByDestino(id);
 
         }
 
+        /// <summary>
+        /// Gets climate information for a destination
+        /// </summary>
+        /// <param name="id">The destination ID</param>
+        /// <returns>Climate information</returns>
         [HttpGet("GetClima/{id}")]
-        public Clima GetClima(int id)
+        [ProducesResponseType(typeof(Clima), 200)]
+        public ActionResult<Clima> GetClima([FromRoute] int id)
         {
             return _destinoService.GetClimaByDestino(id);
         }
 
+        /// <summary>
+        /// Gets the best time to visit a destination
+        /// </summary>
+        /// <param name="id">The destination ID</param>
+        /// <returns>Best visit time information</returns>
         [HttpGet("GetMejorEpoca/{id}")]
-        public MejorEpocaVisita GetMejorEpoca(int id)
+        [ProducesResponseType(typeof(MejorEpocaVisita), 200)]
+        public ActionResult<MejorEpocaVisita> GetMejorEpoca([FromRoute] int id)
         {
             return _destinoService.GetMejorEpocaByDestino(id);
         }
@@ -58,8 +97,14 @@ namespace TourismApi.Controllers
             return _destinoService.GetTransporteByDestino(id);
         }
 
+        /// <summary>
+        /// Gets details for a specific destination
+        /// </summary>
+        /// <param name="destino_id">The destination ID</param>
+        /// <returns>A list of destination details</returns>
         [HttpGet("Detalles/{destino_id}")]
-        public IEnumerable<DestinoDetalles> GetDetallesByDestino(int destino_id)
+        [ProducesResponseType(typeof(IEnumerable<DestinoDetalles>), 200)]
+        public IEnumerable<DestinoDetalles> GetDetallesByDestino([FromRoute] int destino_id)
         {
             return _destinoService.GetDetallesByDestino(destino_id);
         }
@@ -75,11 +120,25 @@ namespace TourismApi.Controllers
             return detalle;
         }
 
+        /// <summary>
+        /// Creates a new destination detail
+        /// </summary>
+        /// <param name="detalle">The destination detail to create</param>
+        /// <returns>The created destination detail</returns>
         [HttpPost("Detalle")]
-        public ActionResult<DestinoDetalles> CreateDetalle(DestinoDetalles detalle)
+        [ProducesResponseType(typeof(DestinoDetalles), 201)]
+        [ProducesResponseType(400)]
+        public ActionResult<DestinoDetalles> CreateDetalle([FromBody] DestinoDetalles detalle)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var newDetalle = _destinoService.AddDetalle(detalle);
-            return CreatedAtAction(nameof(GetDetalleById), new { id = newDetalle.id }, newDetalle);
+            return CreatedAtAction(
+                actionName: nameof(GetDetalleById),
+                routeValues: new { id = newDetalle.id },
+                value: newDetalle);
         }
 
         [HttpPut("Detalle/{id}")]
