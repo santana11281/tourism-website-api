@@ -22,6 +22,11 @@ namespace TourismApi
         public DbSet<Alojamiento> Alojamiento { get; set; }
         public DbSet<AlojamientoDestinoRelation> AlojamientoDestinoRelation { get; set; }
         public DbSet<DestinoDetalles> DestinoDetalles { get; set; }
+        public DbSet<Ruta> Rutas { get; set; }
+        public DbSet<RutaParada> RutaParadas { get; set; }
+        public DbSet<TransporteOpcion> TransporteOpciones { get; set; }
+        public DbSet<TipsViaje> TipsViaje { get; set; }
+        public DbSet<RutasDestinoRelation> RutasDestinoRelation { get; set; }
 
      protected override void OnModelCreating(ModelBuilder modelBuilder)
 {

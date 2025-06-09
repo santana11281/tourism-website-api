@@ -127,5 +127,32 @@ namespace TourismApi.Services.Implementations
                 _context.SaveChanges();
             }
         }
+
+        public List<RutaInfoDto> GetRutasByDestino(int destinoId)
+        {
+            var rutaRelations = _context.RutasDestinoRelation.Where(r => r.destino_id == destinoId).ToList();
+            var rutas = _context.Rutas.ToList();
+            var paradas = _context.RutaParadas.ToList();
+            var transportes = _context.TransporteOpciones.ToList();
+            var tips = _context.TipsViaje.ToList();
+
+            var result = new List<RutaInfoDto>();
+            foreach (var relation in rutaRelations)
+            {
+                var ruta = rutas.FirstOrDefault(r => r.id == relation.ruta_id);
+                if (ruta == null) continue;
+                var rutaParadas = paradas.Where(p => p.ruta_id == ruta.id).ToList();
+                var rutaTransportes = transportes.Where(t => t.ruta_id == ruta.id).ToList();
+                var rutaTips = tips.Where(t => t.ruta_id == ruta.id).ToList();
+                result.Add(new RutaInfoDto
+                {
+                    Ruta = ruta,
+                    Paradas = rutaParadas,
+                    TransporteOpciones = rutaTransportes,
+                    Tips = rutaTips
+                });
+            }
+            return result;
+        }
     }
 }

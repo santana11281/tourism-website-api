@@ -177,5 +177,18 @@ namespace TourismApi.Controllers
             _destinoService.DeleteDetalle(id);
             return NoContent();
         }
+
+        /// <summary>
+        /// Gets route information for a specific destination
+        /// </summary>
+        /// <param name="destino_id">The destination ID</param>
+        /// <returns>Route information including paradas, transport options, and tips</returns>
+        [HttpGet("Rutas/{destino_id}")]
+        [ProducesResponseType(typeof(List<TourismApi.Services.Interfaces.RutaInfoDto>), 200)]
+        public IActionResult GetRutasByDestino([FromRoute] int destino_id)
+        {
+            var rutas = _destinoService.GetRutasByDestino(destino_id);
+            return Ok(rutas);
+        }
     }
 }
