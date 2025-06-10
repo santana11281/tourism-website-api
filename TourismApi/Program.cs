@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlite("Data Source=turismo.db");
+    options.UseSqlServer("Server=tcp:tourismserver123.database.windows.net,1433;Initial Catalog=tourismsql;Persist Security Info=False;User ID=michael;Password=$Pass123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 });
 
 // add interface and implementation

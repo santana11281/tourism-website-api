@@ -1,12 +1,77 @@
 @TourismApi_HostAddress = http://localhost:5041
 
+### Get API Status
+GET {{TourismApi_HostAddress}}/destinos
+Accept: application/json
+
+### Get List of Destinations (Limited to 4)
+GET {{TourismApi_HostAddress}}/destinos/GetDestinos
+Accept: application/json
+
+### Get Activities for a Specific Destination
+GET {{TourismApi_HostAddress}}/destinos/GetActivities/1
+Accept: application/json
+
+### Get Climate Information for a Destination
+GET {{TourismApi_HostAddress}}/destinos/GetClima/1
+Accept: application/json
+
+### Get Best Time to Visit a Destination
+GET {{TourismApi_HostAddress}}/destinos/GetMejorEpoca/1
+Accept: application/json
+
+### Get Accommodation Information for a Destination
+GET {{TourismApi_HostAddress}}/destinos/GetAlojamiento/1
+Accept: application/json
+
+### Get Transportation Information for a Destination
+GET {{TourismApi_HostAddress}}/destinos/GetTransporte/1
+Accept: application/json
+
+### Get All Details for a Destination
+GET {{TourismApi_HostAddress}}/destinos/Detalles/1
+Accept: application/json
+
+### Get Specific Detail by ID
+GET {{TourismApi_HostAddress}}/destinos/GetDetalle/1
+Accept: application/json
+
+### Create New Destination Detail
+POST {{TourismApi_HostAddress}}/destinos/Detalle
+Content-Type: application/json
+Accept: application/json
+
+{
+    "destino_id": 1,
+    "titulo": "Nuevo detalle",
+    "descripcion": "Descripción del nuevo detalle",
+    "imagen_url": "https://example.com/imagen.jpg"
+}
+
+### Update Destination Detail
+PUT {{TourismApi_HostAddress}}/destinos/Detalle/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "id": 1,
+    "destino_id": 1,
+    "titulo": "Detalle actualizado",
+    "descripcion": "Descripción actualizada",
+    "imagen_url": "https://example.com/nueva-imagen.jpg"
+}
+
+### Delete Destination Detail
+DELETE {{TourismApi_HostAddress}}/destinos/Detalle/1
+Accept: application/json
+
+### Get Routes for a Destination
+GET {{TourismApi_HostAddress}}/destinos/Rutas/1
+Accept: application/json
+
+
+
 GET {{TourismApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 
-
-GET {{TourismApi_HostAddress}}/destinos/
-Accept: application/json
-
-
-###
