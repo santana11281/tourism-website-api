@@ -9,6 +9,7 @@ namespace TourismApi.Modelos
         public string provincia { get; set; }
         public string detalle { get; set; }
         public string descripcion { get; set; }
+        public string img_url { get; set; }
 
     }
 }
