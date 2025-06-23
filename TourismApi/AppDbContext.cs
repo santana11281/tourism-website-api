@@ -27,15 +27,24 @@ namespace TourismApi
         public DbSet<TransporteOpcion> TransporteOpciones { get; set; }
         public DbSet<TipsViaje> TipsViaje { get; set; }
         public DbSet<RutasDestinoRelation> RutasDestinoRelation { get; set; }
+        public DbSet<GaleriaCategorias> GaleriaCategorias { get; set; }
+        public DbSet<GaleriaImagenes> GaleriaImagenes { get; set; }
 
-     protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DestinoDetalles>()
+                .Ignore(d => d.ciudad)
+                .Ignore(d => d.provincia);
 
+            modelBuilder.Entity<GaleriaImagenes>()
+                .Property(g => g.CategoriaId)
+                .HasColumnName("categoria_id");
 
-    modelBuilder.Entity<DestinoDetalles>()
-        .Ignore(d => d.ciudad)
-        .Ignore(d => d.provincia);
-}
+            //destino_id
+            modelBuilder.Entity<GaleriaImagenes>()
+                .Property(g => g.DestinoId)
+                .HasColumnName("destino_id");
+        }
 
     }
 }

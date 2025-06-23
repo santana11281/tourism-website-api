@@ -69,9 +69,14 @@ Accept: application/json
 GET {{TourismApi_HostAddress}}/destinos/Rutas/1
 Accept: application/json
 
-
-
-GET {{TourismApi_HostAddress}}/weatherforecast/
+### Get Gallery Categories
+GET {{TourismApi_HostAddress}}/Galeria/Galeria/Categorias
 Accept: application/json
+
+### Get Gallery Images for a Destination
+GET {{TourismApi_HostAddress}}/Galeria/Galeria/Imagenes/1
+Accept: application/json
+
+
 
 
