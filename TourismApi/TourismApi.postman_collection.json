@@ -1,0 +1,306 @@
+{
+  "info": {
+    "_postman_id": "tourism-api-collection",
+    "name": "TourismApi Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "DestinosController",
+      "item": [
+        {
+          "name": "Get API Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos" ]
+            }
+          }
+        },
+        {
+          "name": "Get Destinos (Top 4)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetDestinos",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetDestinos" ]
+            }
+          }
+        },
+        {
+          "name": "Get Activities by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetActivities/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetActivities", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Clima by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetClima/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetClima", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Mejor Epoca by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetMejorEpoca/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetMejorEpoca", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Alojamiento by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetAlojamiento/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetAlojamiento", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Transporte by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetTransporte/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetTransporte", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Detalles by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/Detalles/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "Detalles", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Detalle by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/GetDetalle/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "GetDetalle", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Create Detalle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destino_id\": 1,\n  \"detalle\": \"Detalle ejemplo\",\n  \"descripcion\": \"Descripci�n ejemplo\",\n  \"img_url\": \"https://example.com/imagen.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/destinos/Detalle",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "Detalle" ]
+            }
+          }
+        },
+        {
+          "name": "Update Detalle",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"destino_id\": 1,\n  \"detalle\": \"Detalle actualizado\",\n  \"descripcion\": \"Descripci�n actualizada\",\n  \"img_url\": \"https://example.com/imagen.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/destinos/Detalle/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "Detalle", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Delete Detalle",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/Detalle/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "Detalle", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Rutas by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinos/Rutas/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "destinos", "Rutas", "1" ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GaleriaController",
+      "item": [
+        {
+          "name": "Get Categorias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/galeria/galeria/categorias",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "galeria", "galeria", "categorias" ]
+            }
+          }
+        },
+        {
+          "name": "Get Imagenes by Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/galeria/galeria/imagenes/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "galeria", "galeria", "imagenes", "1" ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ValoracionesController",
+      "item": [
+        {
+          "name": "Get All Valoraciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/valoraciones",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "valoraciones" ]
+            }
+          }
+        },
+        {
+          "name": "Get Valoracion by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/valoraciones/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "valoraciones", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Get Valoraciones by DestinoId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/valoraciones/PorDestino/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "valoraciones", "PorDestino", "1" ]
+            }
+          }
+        },
+        {
+          "name": "Create Valoracion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinoId\": 1,\n  \"usuario\": \"Michael Santana\",\n  \"fechaVisita\": \"2024-06-24T00:00:00\",\n  \"ratingGeneral\": 3,\n  \"comentario\": \"Comentario de prueba con tres categor�as\",\n  \"categorias\": [\n    { \"categoria\": \"Alojamiento\", \"rating\": 3 },\n    { \"categoria\": \"Gastronom�a\", \"rating\": 4 },\n    { \"categoria\": \"Ubicaci�n\", \"rating\": 1 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/valoraciones",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "valoraciones" ]
+            }
+          }
+        },
+        {
+          "name": "Update Valoracion",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"destinoId\": 1,\n  \"usuario\": \"Michael Santana\",\n  \"fechaVisita\": \"2024-06-24T00:00:00\",\n  \"ratingGeneral\": 3,\n  \"comentario\": \"Comentario actualizado\",\n  \"categorias\": [\n    { \"id\": 1, \"valoracionId\": 1, \"categoria\": \"Alojamiento\", \"rating\": 3 },\n    { \"id\": 2, \"valoracionId\": 1, \"categoria\": \"Gastronom�a\", \"rating\": 4 },\n    { \"id\": 3, \"valoracionId\": 1, \"categoria\": \"Ubicaci�n\", \"rating\": 1 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/valoraciones/1",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "valoraciones", "1" ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7023"
+    }
+  ]
+}

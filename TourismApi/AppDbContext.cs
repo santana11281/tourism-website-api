@@ -29,6 +29,8 @@ namespace TourismApi
         public DbSet<RutasDestinoRelation> RutasDestinoRelation { get; set; }
         public DbSet<GaleriaCategorias> GaleriaCategorias { get; set; }
         public DbSet<GaleriaImagenes> GaleriaImagenes { get; set; }
+        public DbSet<Valoracion> Valoraciones { get; set; }
+        public DbSet<ValoracionCategoria> ValoracionCategorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +46,11 @@ namespace TourismApi
             modelBuilder.Entity<GaleriaImagenes>()
                 .Property(g => g.DestinoId)
                 .HasColumnName("destino_id");
+
+            modelBuilder.Entity<Valoracion>()
+                .HasMany(v => v.Categorias)
+                .WithOne(vc => vc.Valoracion)
+                .HasForeignKey(vc => vc.ValoracionId);
         }
 
     }

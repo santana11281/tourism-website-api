@@ -77,6 +77,76 @@ Accept: application/json
 GET {{TourismApi_HostAddress}}/Galeria/Galeria/Imagenes/1
 Accept: application/json
 
+### Get All Valoraciones
+GET {{TourismApi_HostAddress}}/valoraciones
+Accept: application/json
+
+### Get Valoracion by ID
+GET {{TourismApi_HostAddress}}/valoraciones/1
+Accept: application/json
+
+### Get Valoraciones by DestinoId
+GET {{TourismApi_HostAddress}}/valoraciones/PorDestino/1
+Accept: application/json
+
+### Create Valoracion
+POST {{TourismApi_HostAddress}}/valoraciones
+Content-Type: application/json
+Accept: application/json
+
+{
+  "destinoId": 1,
+  "usuario": "usuario_demo",
+  "fechaVisita": "2025-06-23T00:00:00",
+  "ratingGeneral": 5,
+  "comentario": "Excelente experiencia",
+  "categorias": [
+    {
+      "categoria": "Limpieza",
+      "rating": 5
+    },
+    {
+      "categoria": "Servicio",
+      "rating": 4
+    }
+  ]
+}
+
+### Update Valoracion
+PUT {{TourismApi_HostAddress}}/valoraciones/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "destinoId": 1,
+  "usuario": "usuario_demo",
+  "fechaVisita": "2025-06-23T00:00:00",
+  "ratingGeneral": 4,
+  "comentario": "Muy buena experiencia, pero puede mejorar",
+  "categorias": [
+    {
+      "id": 1,
+      "valoracionId": 1,
+      "categoria": "Limpieza",
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "valoracionId": 1,
+      "categoria": "Servicio",
+      "rating": 4
+    }
+  ]
+}
+
+### Delete Valoracion
+DELETE {{TourismApi_HostAddress}}/valoraciones/1
+Accept: application/json
+
+
+
+
 
 
 
